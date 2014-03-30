@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "Pin.h"
 
 @interface ViewController ()
+
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -17,13 +20,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    // add a long press gesture
+    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(addPin:)];
+    recognizer.minimumPressDuration = 0.5;
+    [self.mapView addGestureRecognizer:recognizer];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// let the user add their own pins
+
+- (void)addPin:(UIGestureRecognizer *)recognizer {
+    
+    if (recognizer.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    
+    // convert touched position to map coordinate
+    CGPoint userTouch = [recognizer locationInView:self.mapView];
+    CLLocationCoordinate2D mapPoint = [self.mapView convertPoint:userTouch toCoordinateFromView:self.mapView];
+    
+    // and add it to our view and our array
+    Pin *newPin = [[Pin alloc]initWithCoordinate:mapPoint];
+    [self.mapView addAnnotation:newPin];
+    // [self.allPins addObject:newPin];
+    
+    // [self drawPolylines];
+    
 }
 
 @end

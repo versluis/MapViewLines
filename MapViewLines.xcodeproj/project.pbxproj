@@ -22,6 +22,8 @@
 		D2EBF7B818E86FEF00ED536D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EBF79718E86FEF00ED536D /* UIKit.framework */; };
 		D2EBF7C018E86FEF00ED536D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2EBF7BE18E86FEF00ED536D /* InfoPlist.strings */; };
 		D2EBF7C218E86FEF00ED536D /* MapViewLinesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EBF7C118E86FEF00ED536D /* MapViewLinesTests.m */; };
+		D2EBF7CC18E8704C00ED536D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EBF7CB18E8704C00ED536D /* MapKit.framework */; };
+		D2EBF7CF18E8718900ED536D /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = D2EBF7CE18E8718900ED536D /* Pin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		D2EBF7BD18E86FEF00ED536D /* MapViewLinesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MapViewLinesTests-Info.plist"; sourceTree = "<group>"; };
 		D2EBF7BF18E86FEF00ED536D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2EBF7C118E86FEF00ED536D /* MapViewLinesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewLinesTests.m; sourceTree = "<group>"; };
+		D2EBF7CB18E8704C00ED536D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D2EBF7CD18E8718900ED536D /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pin.h; sourceTree = "<group>"; };
+		D2EBF7CE18E8718900ED536D /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2EBF7CC18E8704C00ED536D /* MapKit.framework in Frameworks */,
 				D2EBF79618E86FEF00ED536D /* CoreGraphics.framework in Frameworks */,
 				D2EBF79818E86FEF00ED536D /* UIKit.framework in Frameworks */,
 				D2EBF79418E86FEF00ED536D /* Foundation.framework in Frameworks */,
@@ -103,6 +109,7 @@
 		D2EBF79218E86FEF00ED536D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2EBF7CB18E8704C00ED536D /* MapKit.framework */,
 				D2EBF79318E86FEF00ED536D /* Foundation.framework */,
 				D2EBF79518E86FEF00ED536D /* CoreGraphics.framework */,
 				D2EBF79718E86FEF00ED536D /* UIKit.framework */,
@@ -120,6 +127,8 @@
 				D2EBF7A818E86FEF00ED536D /* Main_iPad.storyboard */,
 				D2EBF7AB18E86FEF00ED536D /* ViewController.h */,
 				D2EBF7AC18E86FEF00ED536D /* ViewController.m */,
+				D2EBF7CD18E8718900ED536D /* Pin.h */,
+				D2EBF7CE18E8718900ED536D /* Pin.m */,
 				D2EBF7AE18E86FEF00ED536D /* Images.xcassets */,
 				D2EBF79A18E86FEF00ED536D /* Supporting Files */,
 			);
@@ -256,6 +265,7 @@
 				D2EBF7AD18E86FEF00ED536D /* ViewController.m in Sources */,
 				D2EBF7A418E86FEF00ED536D /* AppDelegate.m in Sources */,
 				D2EBF7A018E86FEF00ED536D /* main.m in Sources */,
+				D2EBF7CF18E8718900ED536D /* Pin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
