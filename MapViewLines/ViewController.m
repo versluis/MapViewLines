@@ -12,6 +12,9 @@
 @interface ViewController ()
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (nonatomic, strong) NSMutableArray *allPins;
+
+- (IBAction)drawLines:(id)sender;
 
 @end
 
@@ -42,10 +45,14 @@
     // and add it to our view and our array
     Pin *newPin = [[Pin alloc]initWithCoordinate:mapPoint];
     [self.mapView addAnnotation:newPin];
-    // [self.allPins addObject:newPin];
+    [self.allPins addObject:newPin];
     
     // [self drawPolylines];
     
 }
 
+- (IBAction)drawLines:(id)sender {
+    
+    
+}
 @end
