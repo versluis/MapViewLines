@@ -28,9 +28,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="uVJ-HX-rU4">
-                        <barButtonItem key="rightBarButtonItem" title="Draw Line" id="sRn-c3-NJp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="undo" id="gV4-yu-R2T">
                             <connections>
-                                <action selector="drawLines:" destination="vXZ-lx-hvc" id="8Nf-rF-wrZ"/>
+                                <action selector="undoLastPin:" destination="vXZ-lx-hvc" id="toN-km-p21"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

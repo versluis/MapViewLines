@@ -17,6 +17,7 @@
 @property (nonatomic, strong) MKPolyline *polyline;
 
 - (IBAction)drawLines:(id)sender;
+- (IBAction)undoLastPin:(id)sender;
 
 @end
 
@@ -50,21 +51,35 @@
     [self.mapView addAnnotation:newPin];
     [self.allPins addObject:newPin];
     
-    // [self drawPolylines];
+    [self drawLines:self];
     
 }
 
 - (IBAction)drawLines:(id)sender {
     
     // HACK: for some reason this only updates the map view every other time
-    // because life is too frigging short, let's just call it TWICE
+    // and because life is too frigging short, let's just call it TWICE
     
     [self drawLineSubroutine];
     [self drawLineSubroutine];
     
 }
 
+- (IBAction)undoLastPin:(id)sender {
+    
+    // grab the last Pin and remove it from our map view
+    Pin *latestPin = [self.allPins lastObject];
+    [self.mapView removeAnnotation:latestPin];
+    [self.allPins removeLastObject];
+    
+    // redraw the polyline
+    [self drawLines:self];
+}
+
 - (void)drawLineSubroutine {
+    
+    // remove polyline if one exists
+    [self.mapView removeOverlay:self.polyline];
     
     // create an array of coordinates from allPins
     CLLocationCoordinate2D coordinates[self.allPins.count];
@@ -75,13 +90,17 @@
     }
     
     // create a polyline with all cooridnates
-    self.polyline= [MKPolyline polylineWithCoordinates:coordinates count:self.allPins.count];
-    [self.mapView addOverlay:self.polyline];
+    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:self.allPins.count];
+    [self.mapView addOverlay:polyline];
+    self.polyline = polyline;
     
     // create an MKPolylineView and add it to the map view
     self.lineView = [[MKPolylineView alloc]initWithPolyline:self.polyline];
     self.lineView.strokeColor = [UIColor redColor];
     self.lineView.lineWidth = 5;
+    
+    // for a laugh: how many polylines are we drawing here?
+    self.title = [[NSString alloc]initWithFormat:@"%i", self.mapView.overlays.count];
     
 }
 
