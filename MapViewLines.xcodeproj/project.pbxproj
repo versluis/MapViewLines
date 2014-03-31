@@ -403,6 +403,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MapViewLines/MapViewLines-Prefix.pch";
 				INFOPLIST_FILE = "MapViewLines/MapViewLines-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -416,6 +417,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MapViewLines/MapViewLines-Prefix.pch";
 				INFOPLIST_FILE = "MapViewLines/MapViewLines-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -480,6 +482,7 @@
 				D2EBF7C718E86FEF00ED536D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2EBF7C818E86FEF00ED536D /* Build configuration list for PBXNativeTarget "MapViewLinesTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +491,7 @@
 				D2EBF7CA18E86FEF00ED536D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

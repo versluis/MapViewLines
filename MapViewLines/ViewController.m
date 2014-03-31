@@ -13,6 +13,8 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *allPins;
+@property (nonatomic, strong) MKOverlayView *lineView;
+@property (nonatomic, strong) MKPolyline *polyline;
 
 - (IBAction)drawLines:(id)sender;
 
@@ -23,6 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.allPins = [[NSMutableArray alloc]init];
 	
     // add a long press gesture
     UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(addPin:)];
@@ -53,6 +56,30 @@
 
 - (IBAction)drawLines:(id)sender {
     
+    // create an array of coordinates from allPins
+    CLLocationCoordinate2D coordinates[self.allPins.count];
+    int i = 0;
+    for (Pin *currentPin in self.allPins) {
+        coordinates[i] = currentPin.coordinate;
+        i++;
+    }
+    
+    // create a polyline with all cooridnates
+    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:self.allPins.count];
+    [self.mapView addOverlay:polyline];
+    self.polyline = polyline;
+    
+    // create an MKPolylineView and add it to the map view
+    MKPolylineView *lineView = [[MKPolylineView alloc]initWithPolyline:self.polyline];
+    lineView.strokeColor = [UIColor redColor];
+    lineView.lineWidth = 5;
+    self.lineView = lineView;
     
 }
+
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
+    
+    return self.lineView;
+}
+
 @end
