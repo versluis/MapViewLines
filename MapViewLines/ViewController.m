@@ -100,7 +100,7 @@
     self.lineView.lineWidth = 5;
     
     // for a laugh: how many polylines are we drawing here?
-    self.title = [[NSString alloc]initWithFormat:@"%i", self.mapView.overlays.count];
+    self.title = [[NSString alloc]initWithFormat:@"%lu", (unsigned long)self.mapView.overlays.count];
     
 }
 
