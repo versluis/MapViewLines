@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSMutableArray *allPins;
-@property (nonatomic, strong) MKOverlayView *lineView;
+@property (nonatomic, strong) MKPolylineView *lineView;
 @property (nonatomic, strong) MKPolyline *polyline;
 
 - (IBAction)drawLines:(id)sender;
@@ -56,6 +56,16 @@
 
 - (IBAction)drawLines:(id)sender {
     
+    // HACK: for some reason this only updates the map view every other time
+    // because life is too frigging short, let's just call it TWICE
+    
+    [self drawLineSubroutine];
+    [self drawLineSubroutine];
+    
+}
+
+- (void)drawLineSubroutine {
+    
     // create an array of coordinates from allPins
     CLLocationCoordinate2D coordinates[self.allPins.count];
     int i = 0;
@@ -65,15 +75,13 @@
     }
     
     // create a polyline with all cooridnates
-    MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinates count:self.allPins.count];
-    [self.mapView addOverlay:polyline];
-    self.polyline = polyline;
+    self.polyline= [MKPolyline polylineWithCoordinates:coordinates count:self.allPins.count];
+    [self.mapView addOverlay:self.polyline];
     
     // create an MKPolylineView and add it to the map view
-    MKPolylineView *lineView = [[MKPolylineView alloc]initWithPolyline:self.polyline];
-    lineView.strokeColor = [UIColor redColor];
-    lineView.lineWidth = 5;
-    self.lineView = lineView;
+    self.lineView = [[MKPolylineView alloc]initWithPolyline:self.polyline];
+    self.lineView.strokeColor = [UIColor redColor];
+    self.lineView.lineWidth = 5;
     
 }
 
